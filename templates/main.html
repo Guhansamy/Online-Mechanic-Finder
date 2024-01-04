@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'head.html' %}
+
+
+    
+    <div class="main" style="background-image: url({{STATIC_URL}}mech1.jpg);">
+        {% block c %}{% endblock %}
+    </div>
+    
+</body>
+</html>

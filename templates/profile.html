@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head><style>
+    body{
+        background-image: url(mech1.jpg);
+    }
+    .exam{
+        display:grid;
+        align-items: center;
+        justify-content: center;
+        margin-top: 150px;
+    }
+    .fom{
+        max-width: 400px;
+        margin:0 auto;
+        padding: 20px;
+        border: 10px solid grey;
+        border-radius: 20px;
+        background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+        transition: 0.5s;
+        font-family: monospace;
+        color:black;
+        letter-spacing: 3px;
+        font-size: 15px;
+    }
+</style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{profile.name}}</title>
+    <link rel="stylesheet" href="{% static 'fro.css' %}">
+    <link rel="stylesheet" href = "{% static 'project.css' %}" />
+
+</head>
+<body>
+    <div class="tet">
+        <a href="/"><img class="logo" src="{% static 'logo.jpg' %}" alt=""></a>
+        <div class="img2"><a href="#"> <img src="{% static 'emergency.jpg' %}" class="img3"> </a></div>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}"><button class ="logout"> logout</button></a>
+            {% endif %}
+    </div>
+    <hr>
+    <div class="exam">
+        <form class="fom">
+    <h1>
+        {{profile.name}}    <br>
+        {{profile.shop_name}}   <br>
+        {{profile.phone_number}}    <br>
+        {{profile.address}} <br>
+        {{profile.about}}   <br>
+
+    </h1>
+        </form>
+    </div>
+</body>
+</html>

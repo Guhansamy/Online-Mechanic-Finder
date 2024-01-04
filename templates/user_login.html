@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Online Mechanic Finder
+    </title>
+    <style>
+            button {
+    background-color: royalblue;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    transform: .3s ease;
+  }
+  
+  button:hover {
+    background-color: rgb(56, 90, 194);
+  }
+  body{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    margin-top: 15%;
+    background-image: url(mech1.jpg);
+    background-size: cover;
+  }
+        
+    </style>
+</head>
+<body>
+  <div class="tet">
+    <a href="/"><img class="logo" src="{% static 'logo.jpg' %}" alt=""></a>
+    <div class="img2"><a href="#"> <img src="{% static 'emergency.jpg' %}" class="img3"> </a></div>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}"><button class ="logout"> logout</button></a>
+        {% endif %}
+</div>
+    <button class ="location">Your Location</button>
+</body>
+</html>

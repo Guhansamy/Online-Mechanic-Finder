@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <title> Online Mechanic Finder</title>
+    <link rel="stylesheet" href="{% static 'project.css' %}">
+    <link rel="stylesheet" href="{% static 'fro.css' %}">
+    <style>
+      body{
+  background-image:url("/static/mech1.jpg");
+  background-size: cover;
+}
+    </style>
+</head>
+<body class="main">
+  <div class="tet">
+    <a href="/"><img class="logo" src="{% static 'logo.jpg' %}" alt=""></a>
+    <div class="img2"><a href="#"> <img src="{% static 'emergency.jpg' %}" class="img3"> </a></div>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}"><button class ="logout"> logout</button></a>
+        {% endif %}
+</div>
+
+
+    <div class="imp">
+  <form class="form" method="post">
+    {% csrf_token %}
+    <p class="title">Mechanic Login</p>
+    <p class="message">Login to get your jobs done</p>
+    <label>
+        <input required="" type="text" class="input" name="name" >
+        <span>Name</span><br>
+    </label>    
+   
+    <label>
+        <input required="" type="text" class="input" name="shop" >
+        <span>Shop name</span><br>
+    </label>  
+
+    <label>
+        <input required="" type="text" class="input" name="phone" >
+        <span>Phone Number</span><br>
+    </label>  
+
+    <label>
+        <input required="" type="text" class="input" name="address" >
+        <span>Address</span><br>
+    </label>    
+<label>
+    <textarea required=""rows="1" cols="30" class="input"  name ="about" ></textarea>
+    <span> About</span>
+   </label>
+   <input type="hidden" name="latitude" id="x">
+   <input type="hidden" name="longitude" id="y">
+   {% for i in messages %}
+      <span style="color: red;"> {{i}} </span>
+   {% endfor %}
+   <input type="submit" value="Finish" onclick="getLocation()" class="submit">
+</form>
+    </div>
+
+    <script>
+        var x = document.getElementById("x");
+        var y = document.getElementById("y");
+        
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+        
+        function showPosition(position) {
+          x.innerHTML = position.coords.latitude;
+          y.innerHTML = position.coords.longitude;
+        }
+        </script>        
+</body>

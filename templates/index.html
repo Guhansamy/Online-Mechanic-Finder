@@ -1,0 +1,165 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'fro.css' %}">
+    <link rel="stylesheet" href = "{% static 'project.css' %}" />  
+
+    <title>Document</title>
+    <style>
+ .body-div{
+    background-image:url("/static/mech1.jpg");
+  }
+@media (min-width:481px){
+  
+
+
+  .full{
+    display:flex;
+    flex-direction:row;
+    margin-top: 7%;
+    gap:50px;
+    align-items: center;
+    justify-content:center;
+  }
+
+         .mec-btn,.user-btn {
+    background-color: royalblue;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    transform: .3s ease;
+  }
+  
+  .user-btn,.mec-btn:hover {
+    background-color: rgb(56, 90, 194);
+  }
+ 
+  .user-img{
+    height:170px;
+    width: 170px;
+    object-fit: cover;
+  }
+
+  .mec-img{
+    height:170px;
+    width:170px;
+    object-fit: cover;
+  }
+
+
+  .user-class,.mec-class{
+    overflow: hidden;
+    text-align: center;
+    }
+    .user-form,.mech-form{
+        height:200px;
+        max-width:200px;
+        margin:0 auto;
+        margin-bottom: 10px;
+        padding: 20px;
+        border: 10px solid white;
+        border-radius: 20px;
+        background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+        transition: 0.5s
+    }
+  }
+/* for mobile phone */
+
+    @media(max-width:480px){
+
+      .full{
+    display:flex;
+    flex-direction:column;
+    margin-top: 5%;
+    gap:30px;
+    align-items: center;
+    justify-content:center;
+  }
+  .mec-btn,.user-btn {
+    background-color: royalblue;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    transform: .3s ease;
+  }
+  
+  .user-btn,.mec-btn:hover {
+    background-color: rgb(56, 90, 194);
+  }
+      .user-form{
+        height:150px;
+        max-width:150px;
+        margin:0 auto;
+        margin-bottom: 10px;
+        padding: 20px;
+        border: 10px solid white;
+        border-radius: 20px;
+        background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+        transition: 0.5s
+      }
+      .user-img{
+        height: 130px;
+        width: 130px;
+        object-fit: cover;
+      }
+      .mec-img{
+        height:130px;
+        width: 130px;
+        object-fit: cover;
+      }
+      .user-class,.mec-class{
+        overflow:hidden;
+        text-align:center;
+      }
+      .mech-form{
+        height:150px;
+        max-width:150px;
+        margin:0 auto;
+        margin-bottom: 10px;
+        padding: 20px;
+        border: 10px solid white;
+        border-radius: 20px;
+        background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+        transition: 0.5s
+      }
+    }
+  </style>
+
+
+</head>
+<body class="body-div">
+    <div class="tet">
+        <img class="logo" src="{% static 'logo.jpg' %}" alt="">
+        <div class="img2"><a href="#"> <img src="{% static 'emergency.jpg' %}" class="img3"> </a></div>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}"><button class ="logout"> logout</button></a>
+    {% endif %}
+    </div>
+  <hr>
+
+
+  <div class="full">
+     <div class = "user-class">
+       <form class="user-form">
+          <img src="{% static 'user.png' %}" class = "user-img"><br><br><br>
+        </form>
+        <a href="{% url 'find_mech' %}"><button class="user-btn" > USER</button></a><br>
+      </div>
+  <div class="mec-class">
+         <form  class="mech-form">
+            <img src = "{% static 'mechanic.png' %}" class = "mec-img"> <br><br><br>
+        </form>
+        <a href="{% url 'login' %}"><button class="mec-btn"> MECHANIC</button></a>
+  </div>
+</div>
+
+</body>
+</html>

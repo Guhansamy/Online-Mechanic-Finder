@@ -1,0 +1,54 @@
+
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <head > 
+        <title>Online Mechanic Finder</title>
+        <link rel="stylesheet" href="{% static 'fro.css' %}">
+    <link rel="stylesheet" href = "{% static 'project.css' %}" />
+        
+    </head>
+    <body class="main">
+        <div class="tet">
+            <a href="/"><img class="logo" src="{% static 'logo.jpg' %}" alt=""></a>
+            <div class="img2"><a href="#"> <img src="{% static 'emergency.jpg' %}" class="img3"> </a></div>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'logout' %}"><button class ="logout"> logout</button></a>
+                {% endif %}
+        </div>
+      <hr>
+
+        
+        <div >
+        <div class="imp" >
+      <form class="form" method="post">
+        {% csrf_token %}
+        <p class="title">Login </p>
+        <p class="message">Login to get your jobs done</p>
+        <label>
+            <input required="" type="text" class="input" name="username" >
+            <span>Username</span>
+        </label>    
+       
+                
+        <label>
+            <input required="" type="email" class="input" name="email">
+            <span>Email</span>
+        </label> 
+            
+        <label>
+            <input required="" type="password" class="input" name="password">
+            <span>Password</span>
+        </label>
+        {% for i in messages %}
+            <span class="err">{{i}}</span>
+        {% endfor %}
+
+        <button class="submits">Submit</button>
+        <p class="login">Don't have an account ? <a href="{% url 'sign-up' %}">Sign-up</a> </p>
+    </form>
+        </div>
+    </div>
+    </body>
+</head>
+</html>

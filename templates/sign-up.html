@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<head>
+    <title> Online Mechanic Finder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'fro.css' %}">
+    <link rel="stylesheet" href = "{% static 'project.css' %}" />
+        
+</head>
+<body class="main">
+    <div class="tet">
+        <a href="/"><img class="logo" src="{% static 'logo.jpg' %}" alt=""></a>
+        <div class="img2"><a href="#"> <img src="{% static 'emergency.jpg' %}" class="img3"> </a></div>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}"><button class ="logout"> logout</button></a>
+            {% endif %}
+    </div>
+  <hr>
+
+    <div class="imp">
+  <form class="form" method="post">
+    {% csrf_token %}
+    <p class="title">Register </p>
+    <p class="message">Signup now and get full access to our app. </p>
+    <label>
+        <input required="" type="text" class="input" name="username">
+        <span>Username</span>
+    </label>    
+    <div class="flex">
+        <label>
+            <input required="" type="text" class="input" name="firstname">
+            <span>Firstname</span>
+        </label>
+
+        <label>
+            <input required="" type="text" class="input" name="lastname">
+            <span>Lastname</span>
+        </label>
+    </div>  
+            
+    <label>
+        <input required="" type="email" class="input" name="email">
+        <span>Email</span>
+    </label> 
+        
+    <label>
+        <input required="" type="password" class="input" name="password">
+        <span>Password</span>
+    </label>
+    <label>
+        <input required="" placeholder="" type="password" class="input" name="conf-password">
+        <span>Confirm password</span>
+    </label>
+    <input type="hidden" id="latitude" name="latitude" value="" />
+    <input type="hidden" id="longitude" name="longitude" value="" />
+
+    {% for i in messages %}
+        <span class="err">{{i}}</span>
+    {% endfor %}
+
+    <button class="submit">Submit</button>
+    <p class="login">Already have an account ? <a href="{% url 'login' %}">Login</a> </p>
+</form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: center;">
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Sign-up" name="signup">
+    </form>
+</body>
+</html>-->

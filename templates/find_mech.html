@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find_mechanic</title>
+    <link rel="stylesheet" href="{% static 'fro.css' %}">
+    <link rel="stylesheet" href = "{% static 'project.css' %}" />
+    <style>
+        body{
+            background-image:url("/static/mech1.jpg");
+        }
+        .find{
+            display:grid;
+            justify-content: center;
+            align-items: center;
+            margin-top: 150px;
+
+        }
+        .bttn {
+            border: none;
+    outline: none;
+    background-color: #6c5ce7;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 7px;
+    transition: all ease 0.1s;
+    box-shadow: 0px 5px 0px 0px #a29bfe;
+  }
+  
+  .bttn:hover {
+     transform: translateY(5px);
+    box-shadow: 0px 0px 0px 0px #a29bfe;
+  }
+  a{
+    color:aqua;
+  }
+  h2 , h4{
+    color :white
+  }
+    </style>
+</head>
+<body>
+    <div class="tet">
+        <a href="/"><img class="logo" src="{% static 'logo.jpg' %}" alt=""></a>
+        <div class="img2"><a href="#"> <img src="{% static 'emergency.jpg' %}" class="img3"> </a></div>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}"><button class ="logout"> logout</button></a>
+            {% endif %}
+    </div>
+    <hr>
+
+    <div class="find">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Search for nearby mechanic..." class="bttn">
+        </form>
+    </div>
+        {% for mech in mechanics %}
+            <a href="{% url 'profile' mech.0.user.id %}">
+                <h1>{{mech.0.name}}</h1>
+            </a>
+            <br>
+            <h2>{{mech.1}}</h2>
+            <h4>{{mech.0.shop_name}}</h4>
+            <hr>
+        {% endfor %}
+    
+</body>
+</html>
